@@ -1,0 +1,28 @@
+:global {
+    .gallery-enter {
+        opacity: 0.01;
+    }
+
+    .gallery-enter.gallery-enter-active {
+        opacity: 1;
+        transition: opacity 500ms ease-in;
+    }
+
+    .gallery-leave {
+        opacity: 1;
+    }
+
+    .gallery-leave.gallery-leave-active {
+        opacity: 0.01;
+        transition: opacity 500ms ease-in;
+    }
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.image {
+    width: 50%;
+    position: absolute;
+}
