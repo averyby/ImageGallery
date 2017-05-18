@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentImage } from './index';
+import { getCurrentDemoImage } from './index';
 import ImageGallery from './components/ImageGallery';
 import * as imageChangeActions from './actions/ImageChange';
 import './App.scss';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        currentImage: getCurrentImage(state)
+        currentImage: getCurrentDemoImage(state)
     }
 );
 
