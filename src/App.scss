@@ -17,6 +17,9 @@ $mediaMaxWidth: $galleryHeight*2 + 20 + $galleryPadding*2;
       background-color: red;
     }
   }
+  #specialFont {
+    font-size: 0.8em;
+  }
 }
 
 
@@ -30,5 +33,30 @@ $mediaMaxWidth: $galleryHeight*2 + 20 + $galleryPadding*2;
   justify-content: space-between;
   @media screen and (max-width: $mediaMaxWidth) {
     justify-content: center;
+  }
+}
+
+$bgColor: #586dfe;
+.createGallery {
+  height: 60px;
+  background-color: $bgColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  box-shadow: 0 8px 6px -6px black;
+  font-family: "Times New Roman", Georgia, Serif;
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  &:active {
+    box-shadow: 0 0 0 0;
+  }
+
+  span {
+    color: white;
+    font-size: 1.7em;
+    text-decoration: none;
   }
 }

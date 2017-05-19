@@ -25,10 +25,15 @@ class App extends PureComponent {
 
     render() {
         return (
-            <div class={styles.container}>
-                <div class={styles.galleries}>
-                    <GallerySection demo />
-                    {this.generateUserGalleries()}
+            <div>
+                <a class={styles.createGallery} onClick={() => this.createGallery()}>
+                    <span><span id="specialFont">点此</span>创建新影集</span>
+                </a>
+                <div class={styles.container}>
+                    <div class={styles.galleries}>
+                        <GallerySection demo />
+                        {this.generateUserGalleries()}
+                    </div>
                 </div>
             </div>
         );
