@@ -19,11 +19,11 @@ const reducer = combineReducers({
 });
 const store = createStore(reducer, {
 	demoGallery: [road, fox, sunset],
-	userGalleries: [[], []]
+	userGalleries: [[]]
 });
 
 export const getCurrentUserImage = (state, index) => {
-	return fromUserGalleries.getCurrentUserImage(state.userGalleries);
+	return fromUserGalleries.getCurrentUserImage(state.userGalleries, index);
 };
 
 export const getCurrentDemoImage = (state) => {

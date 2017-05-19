@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ImageGallery from './ImageGallery';
 import { getCurrentDemoImage, getCurrentUserImage } from '../index';
 import * as imageChangeActions from '../actions/ImageChange';
 import styles from '../styles/GallerySection.scss';
 
-class GallerySection extends Component {
+class GallerySection extends PureComponent {
     render() {
         return (
             <div class={styles.sectionContainer}>
@@ -17,12 +17,10 @@ class GallerySection extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let currentImage;
-    if (ownProps.demo) {
-        currentImage = getCurrentDemoImage(state);
-    } else {
-        currentImage = getCurrentUserImage(state, ownProps.index);
-    }
+    let currentImage = ownProps.demo 
+                        ? getCurrentDemoImage(state)
+                        : getCurrentUserImage(state, ownProps.index);
+
     return { currentImage };
 };
 
