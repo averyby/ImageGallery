@@ -1,4 +1,4 @@
-import singleGallery, { getCurrentImage } from './singleGallery';
+import singleGallery, { getCurrentImage, getPlayingStatus } from './singleGallery';
 
 const userGalleries = (state = [], action) => {
     // bypass actions triggered by the demo gallery
@@ -6,7 +6,7 @@ const userGalleries = (state = [], action) => {
     let newState = state.slice();
     switch(action.type) {
         case 'ADD_GALLERY':
-            newState.push({});
+            newState.push({playing: true, gallery: []});
             break;
         case 'BRING_UP_NEXT_IMAGE':
         case 'ADD_IMAGE':
@@ -24,6 +24,10 @@ const userGalleries = (state = [], action) => {
 
 export const getCurrentUserImage = (state, index) => {
     return getCurrentImage(state[index]);
+};
+
+export const getUserGalleryStatus = (state, index) => {
+    return getPlayingStatus(state[index]);
 };
 
 export const getNumberOfUserGalleries = (state) => {

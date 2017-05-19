@@ -33,4 +33,8 @@ export const getCurrentImage = (state) => {
 	return state.gallery && state.gallery[0];
 };
 
+export const getPlayingStatus = (state) => {
+	return state.playing;
+};
+
 export default singleGallery;

@@ -26,12 +26,20 @@ const store = createStore(reducer, {
 	},
 	userGalleries: [{
 		gallery: [boy, boy1],
-		playing: true
+		playing: false
 	}]
 }, applyMiddleware(createLogger()));
 
 export const getCurrentUserImage = (state, index) => {
 	return fromUserGalleries.getCurrentUserImage(state.userGalleries, index);
+};
+
+export const getDemoGalleryStatus = (state) => {
+	return fromDemoGallery.getDemoGalleryStatus(state.demoGallery);
+};
+
+export const getUserGalleryStatus = (state, index) => {
+	return fromUserGalleries.getUserGalleryStatus(state.userGalleries, index);
 };
 
 export const getCurrentDemoImage = (state) => {

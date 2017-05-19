@@ -9,11 +9,25 @@ export default class ImageGallery extends Component {
         this.containerMinHeight = 0;
     }
 
-    componentDidMount() {
+    startPlaying = () => {
         let { changeImage, ...rest } = this.props;
-        setInterval(() => {
-            changeImage(rest);
-        }, 4000);
+        this.timer = setInterval(() => {
+                        changeImage(rest);
+                    }, 4000);
+    };
+
+    stopPlaying = () => {
+        clearInterval(this.timer);
+    };
+
+    componentDidMount() {
+        let { playing } = this.props;
+
+        if (playing) this.startPlaying();    
+    }
+
+    componentWillUnmount() {
+        if (this.timer) clearInterval(this.timer);
     }
 
     componentDidUpdate() {
