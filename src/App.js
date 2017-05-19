@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCurrentDemoImage } from './index';
-import ImageGallery from './components/ImageGallery';
+import GallerySection from './components/GallerySection';
 import * as imageChangeActions from './actions/ImageChange';
 import './App.scss';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        currentImage: getCurrentDemoImage(state)
+        currentDemoImage: getCurrentDemoImage(state),
+
     }
 );
 
+class App extends Component {
+    render() {
+        let { currentDemoImage, ...rest } = this.props;
+        return (
+            <div>
+                <GallerySection currentImage={currentDemoImage} {...rest}/>
+            </div>
+        );
+    }
+}
 
-const App = connect(
+App = connect(
     mapStateToProps,
     imageChangeActions
-)(ImageGallery);
+)(App);
 
 export default App;

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import userGalleries, * as fromUserGalleries from './reducers/userGalleries';
 import singleGallery, * as fromDemoGallery from './reducers/singleGallery';
+
 import road from './img/road.jpg';
 import fox from './img/fox.jpg';
 import sunset from './img/sunset.jpg';
