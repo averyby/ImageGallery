@@ -13,7 +13,7 @@ export default class ImageGallery extends Component {
         let {changeImage, ...rest} = this.props;
         setInterval(() => {
             changeImage(rest);
-        }, 3000);
+        }, 4000);
     }
 
     componentDidUpdate() {
@@ -34,8 +34,8 @@ export default class ImageGallery extends Component {
                  ref={c => this.container = c}>
                 <CSSTransitionGroup
                     transitionName='gallery'
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={500}>
+                    transitionEnterTimeout={2000}
+                    transitionLeaveTimeout={2000}>
                     <img src={this.props.currentImage} 
                         class={styles.image}
                         alt="scenery image"
