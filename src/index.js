@@ -9,7 +9,8 @@ import singleGallery, * as fromDemoGallery from './reducers/singleGallery';
 import road from './img/road.jpg';
 import fox from './img/fox.jpg';
 import sunset from './img/sunset.jpg';
-
+import boy from './img/boy.jpg';
+import boy1 from './img/boy1.jpg';
 
 const images = [road, fox, sunset];
 
@@ -19,7 +20,7 @@ const reducer = combineReducers({
 });
 const store = createStore(reducer, {
 	demoGallery: [road, fox, sunset],
-	userGalleries: [[]]
+	userGalleries: [[boy, boy1], [], [], []]
 });
 
 export const getCurrentUserImage = (state, index) => {

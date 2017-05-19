@@ -1,7 +1,11 @@
+$galleryHeight: 400px;
+$galleryPadding: 50px;
+$mediaMaxWidth: $galleryHeight*2 + 20 + $galleryPadding*2;
+
 :global {
   .container {
     border: 1px solid blue;
-    height: 400px;
+    height: $galleryHeight;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,5 +16,19 @@
       height: 50px;
       background-color: red;
     }
+  }
+}
+
+
+.container {
+  padding: $galleryPadding;
+}
+
+.galleries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media screen and (max-width: $mediaMaxWidth) {
+    justify-content: center;
   }
 }
