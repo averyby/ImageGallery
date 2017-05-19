@@ -22,7 +22,10 @@ const mapStateToProps = (state, ownProps) => {
                         ? getCurrentDemoImage(state)
                         : getCurrentUserImage(state, ownProps.index);
 
-    return { currentImage };
+    return { 
+        currentImage,
+        
+    };
 };
 
 GallerySection = connect(
