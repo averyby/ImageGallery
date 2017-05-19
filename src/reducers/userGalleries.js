@@ -22,4 +22,9 @@ const userGalleries = (state = [], action) => {
 export const getCurrentUserImage = (state, index) => {
     return state[index][0];
 };
+
+export const getNumberOfUserGalleries = (state) => {
+    return state.length;
+};
+
 export default userGalleries;

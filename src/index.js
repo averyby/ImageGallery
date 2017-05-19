@@ -18,7 +18,8 @@ const reducer = combineReducers({
 	userGalleries
 });
 const store = createStore(reducer, {
-	demoGallery: [road, fox, sunset]
+	demoGallery: [road, fox, sunset],
+	userGalleries: [[], []]
 });
 
 export const getCurrentUserImage = (state, index) => {
@@ -28,6 +29,10 @@ export const getCurrentUserImage = (state, index) => {
 export const getCurrentDemoImage = (state) => {
 	return fromDemoGallery.getCurrentDemoImage(state.demoGallery);
 };
+
+export const getNumberOfUserGalleries = (state) => {
+	return fromUserGalleries.getNumberOfUserGalleries(state.userGalleries);
+}
 
 ReactDOM.render(
 	<Provider store={store}>
