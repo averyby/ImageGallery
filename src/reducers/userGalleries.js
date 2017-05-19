@@ -1,7 +1,7 @@
 import singleGallery from './singleGallery';
 
 const userGalleries = (state = [], action) => {
-    if (action.demo) return;
+    if (action.demo) return state;
     let newState = state.slice();
     switch(action.type) {
         case 'ADD_GALLERY':

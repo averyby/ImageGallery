@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getNumberOfUserGalleries } from './index';
 import GallerySection from './components/GallerySection';
+import * as galleryActions from './actions/GalleryActions';
 import styles from './App.scss';
 
 const mapStateToProps = (state, ownProps) => (
@@ -23,10 +24,12 @@ class App extends PureComponent {
         return galleries;
     }
 
+    createGallery = () => this.props.createGallery();
+
     render() {
         return (
             <div>
-                <a class={styles.createGallery} onClick={() => this.createGallery()}>
+                <a class={styles.createGallery} onClick={this.createGallery}>
                     <span><span id="specialFont">点此</span>创建新影集</span>
                 </a>
                 <div class={styles.container}>
@@ -40,6 +43,9 @@ class App extends PureComponent {
     }
 }
 
-App = connect(mapStateToProps)(App);
+App = connect(
+    mapStateToProps,
+    galleryActions
+)(App);
 
 export default App;

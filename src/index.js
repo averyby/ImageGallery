@@ -20,7 +20,7 @@ const reducer = combineReducers({
 });
 const store = createStore(reducer, {
 	demoGallery: [road, fox, sunset],
-	userGalleries: [[boy, boy1], [], [], []]
+	userGalleries: []
 });
 
 export const getCurrentUserImage = (state, index) => {
