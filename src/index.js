@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { createLogger } from 'redux-logger';
 import App from './App';
 import userGalleries, * as fromUserGalleries from './reducers/userGalleries';
-import singleGallery, * as fromDemoGallery from './reducers/singleGallery';
+import demoGallery, * as fromDemoGallery from './reducers/demoGallery';
 
 import road from './img/road.jpg';
 import fox from './img/fox.jpg';
@@ -15,13 +16,13 @@ import boy1 from './img/boy1.jpg';
 const images = [road, fox, sunset];
 
 const reducer = combineReducers({
-	demoGallery: singleGallery,
+	demoGallery,
 	userGalleries
 });
 const store = createStore(reducer, {
 	demoGallery: [road, fox, sunset],
-	userGalleries: []
-});
+	userGalleries: [[boy, boy1]]
+}, applyMiddleware(createLogger()));
 
 export const getCurrentUserImage = (state, index) => {
 	return fromUserGalleries.getCurrentUserImage(state.userGalleries, index);

@@ -10,7 +10,7 @@ export default class ImageGallery extends Component {
     }
 
     componentDidMount() {
-        let {changeImage, ...rest} = this.props;
+        let { changeImage, ...rest } = this.props;
         setInterval(() => {
             changeImage(rest);
         }, 4000);

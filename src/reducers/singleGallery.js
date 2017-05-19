@@ -13,7 +13,4 @@ const singleGallery = (state = [], action) => {
 	return newState;
 };
 
-export const getCurrentDemoImage = (state) => {
-    return state[0];
-};
 export default singleGallery;

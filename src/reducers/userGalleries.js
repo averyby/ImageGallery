@@ -1,6 +1,7 @@
 import singleGallery from './singleGallery';
 
 const userGalleries = (state = [], action) => {
+    // bypass actions triggered by the demo gallery
     if (action.demo) return state;
     let newState = state.slice();
     switch(action.type) {
