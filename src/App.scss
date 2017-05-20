@@ -6,6 +6,9 @@ $mediaMaxWidth: $galleryHeight*2 + 20 + $galleryPadding*2;
   * {
     font-family: "Times New Roman", Georgia, Serif;
   }
+  body {
+    margin: 0 !important;
+  }
   .container {
     border: 1px solid blue;
     height: $galleryHeight;
