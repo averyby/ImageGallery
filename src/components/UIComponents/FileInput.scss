@@ -1,0 +1,42 @@
+.inputContainer {
+    display: flex;
+}
+
+.fileinput {
+  position: absolute;
+  z-index: -1;
+  & + label {
+    padding: 0 1.3em;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #f1e5e6;
+    background-color: #d3394c;
+    cursor: pointer;
+    margin: 0;
+    svg {
+      vertical-align: middle;
+      fill: currentColor;
+      margin-right: 0.45em;
+    }
+    span {
+      transition: opacity 3s;
+      transition-timing-function: ease-in;
+    }
+    span.disappear {
+      opacity: 0;
+    }
+    span.appear {
+      transition: opacity 0s;
+    }
+  }
+  &:focus + label,
+  & + label:hover {
+    background-color: darken(#d3394c, 25%);
+  }
+  &:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+}

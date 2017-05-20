@@ -1,8 +1,11 @@
 $galleryHeight: 400px;
-$galleryPadding: 50px;
+$galleryPadding: 20px;
 $mediaMaxWidth: $galleryHeight*2 + 20 + $galleryPadding*2;
 
 :global {
+  * {
+    font-family: "Times New Roman", Georgia, Serif;
+  }
   .container {
     border: 1px solid blue;
     height: $galleryHeight;
@@ -43,9 +46,8 @@ $bgColor: #586dfe;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   box-shadow: 0 8px 6px -6px black;
-  font-family: "Times New Roman", Georgia, Serif;
   &:hover {
     cursor: pointer;
     text-decoration: none;

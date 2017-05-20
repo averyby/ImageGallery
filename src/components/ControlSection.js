@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './UIComponents/Button';
+import FileInput from './UIComponents/FileInput';
 import styles from '../styles/ControlSection.scss';
 
 export default class ControlSection extends Component {
@@ -15,10 +16,11 @@ export default class ControlSection extends Component {
     };
 
     render() {
-        const { playing } = this.props;
+        const { playing, demo } = this.props;
 
         return (
             <div class={styles.controlSection}>
+                { !demo ? <FileInput /> : null}
                 <div class={styles.buttonArea}>
                     <Button onClick={this.handleButtonClick}>
                         {playing ? '暂停' : '播放'}
