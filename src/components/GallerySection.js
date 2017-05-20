@@ -13,9 +13,12 @@ import * as galleryActions from '../actions/GalleryActions';
 import styles from '../styles/GallerySection.scss';
 
 class GallerySection extends PureComponent {
+
+    componentDidMount = () => this.g.scrollIntoView();
+
     render() {
         return (
-            <div class={styles.sectionContainer}>
+            <div class={styles.sectionContainer} ref={g => this.g = g}>
                 <ControlSection {...this.props} />
                 <ImageGallery {...this.props} />
             </div>

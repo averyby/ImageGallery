@@ -18,7 +18,7 @@ class App extends PureComponent {
         const galleries = [];
         for (let i = 0; i < n; i++) {
             galleries.push(
-                <GallerySection index={i} key={i} />
+                <GallerySection index={i} key={i}  />
             );
         }
         return galleries;
