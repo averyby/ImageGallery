@@ -1,7 +1,5 @@
-# my-webpack-config
-This is a boilerplate project working as a starter using webpack.
-
-Here are some guidelines on how to put this project into use.
+# Image Gallery 
+This is a image viewer project. 
 
 To get started, cd into the project root directory, then `npm install` to install dependencies.
 
