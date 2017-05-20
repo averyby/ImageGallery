@@ -17,7 +17,11 @@ const gallery = (state = [], action) => {
 
 const playing = (state = true, action) => {
 	switch(action.type) {
-		case 'TOGGLE_PLAYING_STATUS':
+		case 'START_PLAYING': 
+			return true;
+		case 'STOP_PLAYING':
+			return false;
+		case 'TOGGLE_PLAYING':
 			return !state;
 		default: 
 			return state;

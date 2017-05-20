@@ -9,6 +9,9 @@ const userGalleries = (state = [], action) => {
             newState.push({playing: true, gallery: []});
             break;
         case 'BRING_UP_NEXT_IMAGE':
+        case 'START_PLAYING':
+        case 'STOP_PLAYING':
+        case 'TOGGLE_PLAYING':
         case 'ADD_IMAGE':
             newState = [
                 ...state.slice(0, action.index),

@@ -7,12 +7,21 @@ export default class ControlSection extends Component {
         super(props);
         this.state = {};
     }
+
+    handleButtonClick = () => {
+        const { togglePlaying, ...rest } = this.props;
+
+        togglePlaying(rest);
+    };
+
     render() {
+        const { playing } = this.props;
+
         return (
             <div class={styles.controlSection}>
                 <div class={styles.buttonArea}>
                     <Button onClick={this.handleButtonClick}>
-                        {this.state.playing ? '暂停' : '播放'}
+                        {playing ? '暂停' : '播放'}
                     </Button>
                 </div>
             </div>

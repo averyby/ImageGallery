@@ -11,13 +11,14 @@ export default class ImageGallery extends Component {
 
     startPlaying = () => {
         let { changeImage, ...rest } = this.props;
+
         this.timer = setInterval(() => {
                         changeImage(rest);
                     }, 4000);
     };
 
     stopPlaying = () => {
-        clearInterval(this.timer);
+        if (this.timer) clearInterval(this.timer);
     };
 
     componentDidMount() {
@@ -30,7 +31,25 @@ export default class ImageGallery extends Component {
         if (this.timer) clearInterval(this.timer);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
+        let { playing } = this.props;
+        let { playing: prevPlaying } = prevProps;
+
+       /* 
+        *  Only when previous status is different from 
+        *  the current playing status should we start/stop playing.
+        */
+        if (prevPlaying && !playing) this.stopPlaying();
+        if (!prevPlaying && playing) this.startPlaying();
+        this.tryToAdjustContainerHeight();
+    }
+
+    tryToAdjustContainerHeight() {
+        let { playing } = this.props;
+
+        // When not playing, galleries' heights are static
+        if (!playing) return; 
+
         let imageHeight = $(this.img).height();
 
         if (imageHeight <= this.containerMinHeight) return;

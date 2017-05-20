@@ -9,6 +9,7 @@ import {
 } from '../index';
 import ControlSection from './ControlSection';
 import * as imageChangeActions from '../actions/ImageChange';
+import * as galleryActions from '../actions/GalleryActions';
 import styles from '../styles/GallerySection.scss';
 
 class GallerySection extends PureComponent {
@@ -34,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
 GallerySection = connect(
     mapStateToProps,
-    imageChangeActions
+    { ...imageChangeActions, ...galleryActions }
 )(GallerySection);
 
 export default GallerySection;
