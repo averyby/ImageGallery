@@ -31,7 +31,13 @@ const singleGallery = combineReducers({
 });
 
 export const getCurrentImage = (state) => {
-	return state.gallery && state.gallery[0];
+	const target = state.gallery && state.gallery[0];
+	/*
+	** If target is an object with an imgUrl property, 
+	** we're requesting user images. Otherwise, the target 
+	** is the demo image url.
+	*/
+	return (target && target.imgUrl) || target;
 };
 
 export const getPlayingStatus = (state) => state.playing;

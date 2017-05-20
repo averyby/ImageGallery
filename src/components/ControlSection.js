@@ -15,11 +15,14 @@ export default class ControlSection extends Component {
         togglePlaying(rest);
     };
 
-    getUrls = (images) => {
+    getImages = (images) => {
         if (!images || !images.length) return;
         const { index } = this.props;
         images = images.map(
-            (img, idx) => window.URL.createObjectURL(img)
+            (img, idx) => ({
+                name: img.name,
+                imgUrl: window.URL.createObjectURL(img)
+            })
         );
         this.props.addImages({ index, images });
     };
@@ -27,7 +30,7 @@ export default class ControlSection extends Component {
     render() {
         const { playing, demo, ...rest } = this.props;
         const ImageFileInput = 
-            <ImageInput {...rest} onImagesReceive={this.getUrls} />;
+            <ImageInput {...rest} onImagesReceive={this.getImages} />;
 
         return (
             <div class={styles.controlSection}>

@@ -23,15 +23,15 @@ const store = createStore(reducer, {
 	demoGallery: {
 		gallery: [road, fox, sunset],
 		playing: true
-	},
-	userGalleries: [{
-		gallery: [boy, boy1],
-		playing: false
-	}]
+	}
 }, applyMiddleware(createLogger()));
 
 export const getCurrentUserImage = (state, index) => {
 	return fromUserGalleries.getCurrentUserImage(state.userGalleries, index);
+};
+
+export const getCurrentDemoImage = (state) => {
+	return fromDemoGallery.getCurrentDemoImage(state.demoGallery);
 };
 
 export const getDemoGalleryStatus = (state) => {
@@ -40,10 +40,6 @@ export const getDemoGalleryStatus = (state) => {
 
 export const getUserGalleryStatus = (state, index) => {
 	return fromUserGalleries.getUserGalleryStatus(state.userGalleries, index);
-};
-
-export const getCurrentDemoImage = (state) => {
-	return fromDemoGallery.getCurrentDemoImage(state.demoGallery);
 };
 
 export const getNumberOfUserGalleries = (state) => {

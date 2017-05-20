@@ -12,18 +12,32 @@ class ImageInput extends Component {
         };
     }
 
+    showNumberOfImagesAdded = (n) => {
+        this.setState({
+            labelText: `添加了 ${n} 张图片`,
+            disabled: true
+        });
+        setTimeout(() => {
+            this.setState({
+                labelText: '继续添加图片',
+                disabled: false
+            })
+        }, 3000);
+    };
+
     onChange = (files) => {
         const isImage = (file) => /^image\//.test(file.type);
-        const alreadyExisted = (image) => 
-                this.props.existingImages.indexOf(image) > -1;
+        const { existingImages } = this.props;
+        const alreadyExisted = (image) => {
+            const { existingImages } = this.props;
+            return existingImages.some((obj, idx) => obj.name === image.name);
+        };
 
         // The parameter files is an array-like object
         files = Array.from(files).filter(
             (file) => !!( isImage(file) && !alreadyExisted(file) )
         );
-        this.setState({
-            labelText: `添加了 ${files.length} 张图片`
-        });
+        this.showNumberOfImagesAdded(files.length);
         this.props.onImagesReceive(files);
     };
 

@@ -71,7 +71,6 @@ export default class ImageGallery extends Component {
                     transitionLeaveTimeout={2000}>
                     <img src={this.props.currentImage} 
                         class={styles.image}
-                        alt="scenery image"
                         key={this.props.currentImage}
                         ref={img => this.img = img} />
                     
