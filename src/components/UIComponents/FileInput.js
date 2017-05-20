@@ -10,7 +10,6 @@ export default class FileInput extends Component {
     handleFileChange = (e) => {
         const selectedFiles = this.fileInput.files;
 
-        debugger;
         // No files are selected, do nothing.
         if (!(selectedFiles && selectedFiles.length)) return;
         this.props.onChange(selectedFiles); // Delegate to the parent comp.

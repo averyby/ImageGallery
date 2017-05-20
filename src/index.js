@@ -1,30 +1,10 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
 import App from './App';
-import userGalleries, * as fromUserGalleries from './reducers/userGalleries';
-import demoGallery, * as fromDemoGallery from './reducers/demoGallery';
-
-import road from './img/road.jpg';
-import fox from './img/fox.jpg';
-import sunset from './img/sunset.jpg';
-import boy from './img/boy.jpg';
-import boy1 from './img/boy1.jpg';
-
-const images = [road, fox, sunset];
-
-const reducer = combineReducers({
-	demoGallery,
-	userGalleries
-});
-const store = createStore(reducer, {
-	demoGallery: {
-		gallery: [road, fox, sunset],
-		playing: true
-	}
-}, applyMiddleware(createLogger()));
+import * as fromUserGalleries from './reducers/userGalleries';
+import * as fromDemoGallery from './reducers/demoGallery';
+import configureStore from './configureStore';
 
 export const getCurrentUserImage = (state, index) => {
 	return fromUserGalleries.getCurrentUserImage(state.userGalleries, index);
@@ -50,7 +30,7 @@ export const getExistingImages = (state, index) => {
 	return fromUserGalleries.getExistingImages(state.userGalleries, index);
 };
 ReactDOM.render(
-	<Provider store={store}>
+	<Provider store={configureStore()}>
 		<App />
 	</Provider>,
 	document.getElementById('app')

@@ -29,7 +29,7 @@ var plugins = {
             template: './index-template.html',
             // commons should be included before app, 
             // but html webpack plugin will take care of this.
-            chunks: ['app', 'commons', 'bootstrap'], // select the entry items to include
+            chunks: ['app', 'commons'], // select the entry items to include
             minify: {
                 collapseWhitespace: isProd
             }
@@ -90,8 +90,6 @@ module.exports = {
         // According to HtmlWebpackPlugin config, it's possible that 
         // not all entry chunks are included into index.html
         app: ['./src/index.js'],
-        about: './src/about.js',
-        bootstrap: bootstrapConfig,
         commons: ['react', 'react-dom']
     },
 //  externals: {
