@@ -15,12 +15,23 @@ export default class ControlSection extends Component {
         togglePlaying(rest);
     };
 
+    getUrls = (images) => {
+        if (!images || !images.length) return;
+        const { index } = this.props;
+        images = images.map(
+            (img, idx) => window.URL.createObjectURL(img)
+        );
+        this.props.addImages({ index, images });
+    };
+
     render() {
-        const { playing, demo } = this.props;
+        const { playing, demo, ...rest } = this.props;
+        const ImageFileInput = 
+            <ImageInput {...rest} onImagesReceive={this.getUrls} />;
 
         return (
             <div class={styles.controlSection}>
-                { !demo ? <ImageInput /> : null}
+                { !demo ? ImageFileInput : null }
                 <div class={styles.buttonArea}>
                     <Button onClick={this.handleButtonClick}>
                         {playing ? '暂停' : '播放'}

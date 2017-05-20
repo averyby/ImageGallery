@@ -4,3 +4,10 @@ export const changeImage
             demo,
             index
         });
+
+export const addImages
+        = ({index, images}) => ({
+            type: 'ADD_IMAGE',
+            index,
+            images
+        });

@@ -48,8 +48,11 @@ export const getCurrentDemoImage = (state) => {
 
 export const getNumberOfUserGalleries = (state) => {
 	return fromUserGalleries.getNumberOfUserGalleries(state.userGalleries);
-}
+};
 
+export const getExistingImages = (state, index) => {
+	return fromUserGalleries.getExistingImages(state.userGalleries, index);
+};
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

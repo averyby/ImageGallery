@@ -1,4 +1,8 @@
-import singleGallery, { getCurrentImage, getPlayingStatus } from './singleGallery';
+import singleGallery, {
+    getCurrentImage, 
+    getPlayingStatus, 
+    getAllImages 
+} from './singleGallery';
 
 const userGalleries = (state = [], action) => {
     // bypass actions triggered by the demo gallery
@@ -35,6 +39,10 @@ export const getUserGalleryStatus = (state, index) => {
 
 export const getNumberOfUserGalleries = (state) => {
     return state.length;
+};
+
+export const getExistingImages = (state, index) => {
+    return getAllImages(state[index]);
 };
 
 export default userGalleries;

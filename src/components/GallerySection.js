@@ -5,7 +5,7 @@ import {
     getCurrentDemoImage, 
     getCurrentUserImage,
     getDemoGalleryStatus,
-    getUserGalleryStatus 
+    getUserGalleryStatus,
 } from '../index';
 import ControlSection from './ControlSection';
 import * as imageChangeActions from '../actions/ImageChange';
