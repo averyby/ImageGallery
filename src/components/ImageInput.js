@@ -56,5 +56,5 @@ const mapStateToProps = (state, ownProps) => ({
     existingImages: getExistingImages(state, ownProps.index)
 });
 
-ImageInput = connect(mapStateToProps, null)(ImageInput);
-export default ImageInput;
+export default connect(mapStateToProps, null)(ImageInput);
+ 

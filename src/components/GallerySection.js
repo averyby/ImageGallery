@@ -14,7 +14,7 @@ import styles from '../styles/GallerySection.scss';
 
 class GallerySection extends PureComponent {
 
-    componentDidMount = () => this.g.scrollIntoView();
+    componentDidMount = () => !this.props.demo && this.g.scrollIntoView();
 
     render() {
         return (

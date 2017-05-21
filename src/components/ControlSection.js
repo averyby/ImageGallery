@@ -4,10 +4,6 @@ import ImageInput from './ImageInput';
 import styles from '../styles/ControlSection.scss';
 
 export default class ControlSection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
 
     handleButtonClick = () => {
         const { togglePlaying, ...rest } = this.props;
