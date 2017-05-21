@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ImageGallery from './ImageGallery';
-import { 
-    getCurrentDemoImage, 
-    getCurrentUserImage,
-    getDemoGalleryStatus,
-    getUserGalleryStatus,
-} from '../index';
+import { getCurrentImage, getPlayingStatus } from '../index';
 import ControlSection from './ControlSection';
 import * as imageChangeActions from '../actions/ImageChange';
 import * as galleryActions from '../actions/GalleryActions';
@@ -26,15 +21,10 @@ class GallerySection extends PureComponent {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    const getCurrentImage = ownProps.demo ? getCurrentDemoImage : getCurrentUserImage;
-    const getPlayingStatus = ownProps.demo ? getDemoGalleryStatus : getUserGalleryStatus;
-
-    return { 
-        currentImage: getCurrentImage(state, ownProps.index),
-        playing: getPlayingStatus(state, ownProps.index)
-    };
-};
+const mapStateToProps = (state, ownProps) => ({ 
+        currentImage: getCurrentImage(state, ownProps),
+        playing: getPlayingStatus(state, ownProps)
+    });
 
 GallerySection = connect(
     mapStateToProps,

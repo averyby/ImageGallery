@@ -7,14 +7,14 @@ import styles from './App.scss';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        numberOfUserGalleries: getNumberOfUserGalleries(state)
+        userGalleryCount: getNumberOfUserGalleries(state)
     }
 );
 
 class App extends PureComponent {
 
     generateUserGalleries() {
-        let n = this.props.numberOfUserGalleries;
+        let n = this.props.userGalleryCount;
         const galleries = [];
         for (let i = 0; i < n; i++) {
             galleries.push(
