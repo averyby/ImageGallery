@@ -1,25 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { getNumberOfUserGalleries } from './index';
+import { getUserGalleries } from './index';
 import GallerySection from './components/GallerySection';
 import * as galleryActions from './actions/GalleryActions';
 import styles from './App.scss';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        userGalleryCount: getNumberOfUserGalleries(state)
+        userGalleries: getUserGalleries(state)
     }
 );
 
 class App extends PureComponent {
 
     generateUserGalleries() {
-        let n = this.props.userGalleryCount;
+        const { userGalleries } = this.props;
         const galleries = [];
-        for (let i = 0; i < n; i++) {
-            galleries.push(
-                <GallerySection index={i} key={i}  />
-            );
+
+        for(let id in userGalleries) {
+            galleries.push(<GallerySection id={id} key={id} />);
         }
         return galleries;
     }

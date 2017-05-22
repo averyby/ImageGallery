@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
+import uuidV4 from 'uuid/v4';
 
-const gallery = (state = [], action) => {
+const images = (state = [], action) => {
     let newState = state.slice();
 	switch(action.type) {
 		case 'BRING_UP_NEXT_IMAGE':
@@ -27,11 +28,12 @@ const playing = (state = true, action) => {
 
 const singleGallery = combineReducers({
 	playing,
-	gallery
+	images,
+	id: (state = uuidV4()) => state
 });
 
 export const getCurrentImage = (state) => {
-	const target = state.gallery && state.gallery[0];
+	const target = state.images && state.images[0];
 	/*
 	** If target is an object with an imgUrl property, 
 	** we're requesting user images. Otherwise, the target 
@@ -40,10 +42,10 @@ export const getCurrentImage = (state) => {
 	return (target && target.imgUrl) || target;
 };
 
-export const getImageCount = (state) => (state.gallery && state.gallery.length) || 0;
+export const getImageCount = (state) => (state.images && state.images.length) || 0;
 
 export const getPlayingStatus = (state) => state.playing;
 
-export const getAllImages = (state) => state.gallery;
+export const getAllImages = (state) => state.images;
 
 export default singleGallery;

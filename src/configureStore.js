@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
+import uuidV4 from 'uuid/v4';
 import userGalleries from './reducers/userGalleries';
 import demoGallery from './reducers/demoGallery';
 
@@ -23,9 +24,10 @@ export default () => {
 
     return createStore(reducer, {
         demoGallery: {
-            // gallery: [boy1, boy2, boy3, boy4],
-            gallery: [fox, road, sunset],
-            playing: true
+            images: [boy1, boy2, boy3, boy4],
+            // images: [fox, road, sunset],
+            playing: true,
+            id: uuidV4()
         }
     }, applyMiddleware(...middlewares));
 };

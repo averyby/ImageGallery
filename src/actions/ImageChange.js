@@ -1,13 +1,13 @@
-export const changeImage 
-        = ({demo, index}) => ({
-            type: 'BRING_UP_NEXT_IMAGE',
-            demo,
-            index
-        });
+export const 
+changeImage = ({demo, id}) => ({ 
+    type: 'BRING_UP_NEXT_IMAGE',
+    demo,
+    id
+});
 
-export const addImages
-        = ({index, images}) => ({
-            type: 'ADD_IMAGE',
-            index,
-            images
-        });
+export const 
+addImages = ({id, images}) => ({
+    type: 'ADD_IMAGE',
+    id,
+    images
+});

@@ -1,3 +1,4 @@
+import uuidV4 from 'uuid/v4';
 import singleGallery, {
     getCurrentImage, 
     getPlayingStatus, 
@@ -5,52 +6,49 @@ import singleGallery, {
     getImageCount 
 } from './singleGallery';
 
-const userGalleries = (state = [], action) => {
+const removeItemByKey = (state, id) => {
+    const o = {};
+    for (let key in state) {
+        if (key !== id) o[key] = state[key];
+    }
+    return o;
+};
+
+const userGalleries = (state = {}, action) => {
     // bypass actions triggered by the demo gallery
     if (action.demo) return state;
-    let newState = state.slice();
     switch(action.type) {
         case 'ADD_GALLERY':
-            newState.push({playing: true, gallery: []});
-            break;
+            const id = uuidV4();
+            return {
+                ...state, 
+                [id]: { id, playing: true, images: [] }
+            };
         case 'DELETE_GALLERY':
-            newState.splice(action.index, 1);
-            break;
+            return removeItemByKey(state, action.id);
         case 'BRING_UP_NEXT_IMAGE':
         case 'START_PLAYING':
         case 'STOP_PLAYING':
         case 'TOGGLE_PLAYING':
         case 'ADD_IMAGE':
-            newState = [
-                ...state.slice(0, action.index),
-                singleGallery(state[action.index], action),
-                ...state.slice(action.index + 1)
-            ];
-            break;
+            return Object.assign({}, state, {
+                [action.id]: singleGallery(state[action.id], action)
+            });
         default:
             return state;
     }
-    return newState;
 };
 
-export const getCurrentUserImage = (state, index) => {
-    return getCurrentImage(state[index]);
-};
+const selectorCreator = (selector) => (state, id) => selector(state[id]);
 
-export const getUserGalleryStatus = (state, index) => {
-    return getPlayingStatus(state[index]);
-};
+export const getCurrentUserImage = selectorCreator(getCurrentImage);
 
-export const getUserImageCount = (state, index) => {
-    return getImageCount(state[index]);
-}
+export const getUserGalleryStatus = selectorCreator(getPlayingStatus);
 
-export const getNumberOfUserGalleries = (state) => {
-    return state.length;
-};
+export const getUserImageCount = selectorCreator(getImageCount);
 
-export const getExistingImages = (state, index) => {
-    return getAllImages(state[index]);
-};
+export const getExistingImages = selectorCreator(getAllImages);
+
+export const getUserGalleries = (state) => state;
 
 export default userGalleries;

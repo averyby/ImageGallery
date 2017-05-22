@@ -7,12 +7,12 @@ import * as fromDemo from './reducers/demoGallery';
 import configureStore from './configureStore';
 
 const createSelectorCreator = (mapping) => (selectorName) => (state, ownProps) => {
-	const { demo, index } = ownProps || {};
+	const { demo, id } = ownProps || {};
 	const { [selectorName]: selectorMapping } = mapping;
 	return (
 		demo 
 		? selectorMapping.demoSelector(state.demoGallery)
-		: selectorMapping.userSelector(state.userGalleries, index)
+		: selectorMapping.userSelector(state.userGalleries, id)
 	);
 };
 
@@ -29,9 +29,9 @@ const selectorCreator = createSelectorCreator({
 		demoSelector: fromDemo.getDemoImageCount,
 		userSelector: fromUser.getUserImageCount
 	},
-	getNumberOfUserGalleries: {
+	getUserGalleries: {
 		demoSelector: null,
-		userSelector: fromUser.getNumberOfUserGalleries
+		userSelector: fromUser.getUserGalleries
 	},
 	getExistingImages: {
 		demoSelector: null,
@@ -41,7 +41,7 @@ const selectorCreator = createSelectorCreator({
 export const getCurrentImage = selectorCreator('getCurrentImage');
 export const getPlayingStatus = selectorCreator('getPlayingStatus');
 export const getImageCount = selectorCreator('getImageCount');
-export const getNumberOfUserGalleries = selectorCreator('getNumberOfUserGalleries');
+export const getUserGalleries = selectorCreator('getUserGalleries');
 export const getExistingImages = selectorCreator('getExistingImages');
 	
 ReactDOM.render(

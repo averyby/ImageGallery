@@ -13,29 +13,24 @@ export default class ControlSection extends Component {
 
     getImages = (images) => {
         if (!images || !images.length) return;
-        const { index } = this.props;
+        const { id } = this.props;
         images = images.map(
             (img, idx) => ({
                 name: img.name,
                 imgUrl: window.URL.createObjectURL(img)
             })
         );
-        this.props.addImages({ index, images });
+        this.props.addImages({ id, images });
     };
 
-    handleDelete = () => this.props.deleteGallery(this.props.index);
+    handleDelete = () => this.props.deleteGallery(this.props.id);
     
     render() {
         const { playing, demo, imageCount, ...rest } = this.props;
-        const ImageFileInput = 
-            <ImageInput {...rest} onImagesReceive={this.getImages} />;
+        const ImageFileInput = <ImageInput {...rest} onImagesReceive={this.getImages} />;
         const deleteButton = (
             <Button onClick={this.handleDelete} 
-                    style={{ 
-                        backgroundColor: '#EFF296', 
-                        color: 'black',
-                        flex: 1
-                    }}>删除</Button>
+                    style={{ backgroundColor: '#EFF296', color: 'black', flex: 1 }}>删除</Button>
         );
 
         return (

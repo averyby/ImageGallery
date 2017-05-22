@@ -11,16 +11,8 @@ const demoGallery = (state = {}, action) => {
 };
 
 
-export const getCurrentDemoImage = (state) => {
-    return getCurrentImage(state);
-};
-
-export const getDemoGalleryStatus = (state) => {
-    return getPlayingStatus(state);
-};
-
-export const getDemoImageCount = (state) => {
-    return getImageCount(state);
-};
+export const getCurrentDemoImage = (state) => getCurrentImage(state);
+export const getDemoGalleryStatus = (state) => getPlayingStatus(state);
+export const getDemoImageCount = (state) => getImageCount(state);
 
 export default demoGallery;
