@@ -2,7 +2,11 @@ export const createGallery
         = () => ({
             type: 'ADD_GALLERY'
         });
-
+export const deleteGallery
+        = (index) => ({
+            type: 'DELETE_GALLERY',
+            index
+        });
 const actionCreatorTemplate = (type) => {
     return ({demo, index}) => ({ type, demo, index });
 }

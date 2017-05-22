@@ -23,6 +23,8 @@ export default class ControlSection extends Component {
         this.props.addImages({ index, images });
     };
 
+    handleDelete = () => this.props.deleteGallery(this.props.index);
+    
     render() {
         const { playing, demo, imageCount, ...rest } = this.props;
         const ImageFileInput = 

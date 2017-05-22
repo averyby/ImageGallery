@@ -13,6 +13,9 @@ const userGalleries = (state = [], action) => {
         case 'ADD_GALLERY':
             newState.push({playing: true, gallery: []});
             break;
+        case 'DELETE_GALLERY':
+            newState.splice(action.index, 1);
+            break;
         case 'BRING_UP_NEXT_IMAGE':
         case 'START_PLAYING':
         case 'STOP_PLAYING':
