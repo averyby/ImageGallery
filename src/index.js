@@ -24,6 +24,14 @@ export const getPlayingStatus = (state, ownProps) => {
 	);
 };
 
+export const getImageCount = (state, ownProps) => {
+	const { demo, index } = ownProps;
+	return (
+		demo 
+		? fromDemoGallery.getDemoImageCount(state.demoGallery) 
+		: fromUserGalleries.getUserImageCount(state.userGalleries, index)
+	);
+};
 export const getNumberOfUserGalleries = (state) => {
 	return fromUserGalleries.getNumberOfUserGalleries(state.userGalleries);
 };

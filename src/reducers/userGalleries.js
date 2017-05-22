@@ -1,7 +1,8 @@
 import singleGallery, {
     getCurrentImage, 
     getPlayingStatus, 
-    getAllImages 
+    getAllImages,
+    getImageCount 
 } from './singleGallery';
 
 const userGalleries = (state = [], action) => {
@@ -36,6 +37,10 @@ export const getCurrentUserImage = (state, index) => {
 export const getUserGalleryStatus = (state, index) => {
     return getPlayingStatus(state[index]);
 };
+
+export const getUserImageCount = (state, index) => {
+    return getImageCount(state[index]);
+}
 
 export const getNumberOfUserGalleries = (state) => {
     return state.length;

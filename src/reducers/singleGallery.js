@@ -40,6 +40,8 @@ export const getCurrentImage = (state) => {
 	return (target && target.imgUrl) || target;
 };
 
+export const getImageCount = (state) => (state.gallery && state.gallery.length) || 0;
+
 export const getPlayingStatus = (state) => state.playing;
 
 export const getAllImages = (state) => state.gallery;

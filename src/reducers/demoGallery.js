@@ -1,4 +1,8 @@
-import singleGallery, { getCurrentImage, getPlayingStatus } from './singleGallery';
+import singleGallery, { 
+    getCurrentImage, 
+    getPlayingStatus,
+    getImageCount 
+} from './singleGallery';
 
 const demoGallery = (state = {}, action) => {
     // bypass actions triggered by user galleries
@@ -13,6 +17,10 @@ export const getCurrentDemoImage = (state) => {
 
 export const getDemoGalleryStatus = (state) => {
     return getPlayingStatus(state);
+};
+
+export const getDemoImageCount = (state) => {
+    return getImageCount(state);
 };
 
 export default demoGallery;

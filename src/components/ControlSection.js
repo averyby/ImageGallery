@@ -24,7 +24,7 @@ export default class ControlSection extends Component {
     };
 
     render() {
-        const { playing, demo, ...rest } = this.props;
+        const { playing, demo, imageCount, ...rest } = this.props;
         const ImageFileInput = 
             <ImageInput {...rest} onImagesReceive={this.getImages} />;
 
@@ -32,9 +32,10 @@ export default class ControlSection extends Component {
             <div class={styles.controlSection}>
                 { !demo ? ImageFileInput : null }
                 <div class={styles.buttonArea}>
+                    { imageCount > 1 ? 
                     <Button onClick={this.handleButtonClick}>
                         {playing ? '暂停' : '播放'}
-                    </Button>
+                    </Button> : null }
                 </div>
             </div>
         );
