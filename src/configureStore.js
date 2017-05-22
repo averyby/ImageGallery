@@ -18,7 +18,7 @@ export default () => {
     });
     const middlewares = [];
     if (process.env.NODE_ENV !== 'production') {
-        middlewares.push(createLogger());
+        // middlewares.push(createLogger());
     }
 
     return createStore(reducer, {

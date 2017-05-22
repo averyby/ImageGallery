@@ -2,6 +2,9 @@
     display: flex;
     margin-bottom: 10px;
     height: 40px;
+    border-radius: .3em;
+    overflow: hidden;
+    border: 1px solid #CCCCC2;
     .buttonArea {
         flex: 1;
         display: flex;

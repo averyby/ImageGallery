@@ -27,6 +27,14 @@ export default class ControlSection extends Component {
         const { playing, demo, imageCount, ...rest } = this.props;
         const ImageFileInput = 
             <ImageInput {...rest} onImagesReceive={this.getImages} />;
+        const deleteButton = (
+            <Button onClick={this.handleDelete} 
+                    style={{ 
+                        backgroundColor: '#EFF296', 
+                        color: 'black',
+                        flex: 1
+                    }}>删除</Button>
+        );
 
         return (
             <div class={styles.controlSection}>
@@ -36,6 +44,7 @@ export default class ControlSection extends Component {
                     <Button onClick={this.handleButtonClick}>
                         {playing ? '暂停' : '播放'}
                     </Button> : null }
+                    { !demo ? deleteButton : null }
                 </div>
             </div>
         );
