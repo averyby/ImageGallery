@@ -53,7 +53,7 @@ class ImageInput extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    existingImages: getExistingImages(state, ownProps.index)
+    existingImages: getExistingImages(state, ownProps)
 });
 
 export default connect(mapStateToProps, null)(ImageInput);

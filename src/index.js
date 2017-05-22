@@ -2,43 +2,48 @@ import React from 'react';
 import ReactDOM  from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
-import * as fromUserGalleries from './reducers/userGalleries';
-import * as fromDemoGallery from './reducers/demoGallery';
+import * as fromUser from './reducers/userGalleries';
+import * as fromDemo from './reducers/demoGallery';
 import configureStore from './configureStore';
 
-export const getCurrentImage = (state, ownProps) => {
-	const { demo, index } = ownProps;
+const createSelectorCreator = (mapping) => (selectorName) => (state, ownProps) => {
+	const { demo, index } = ownProps || {};
+	const { [selectorName]: selectorMapping } = mapping;
 	return (
 		demo 
-		? fromDemoGallery.getCurrentDemoImage(state.demoGallery) 
-		: fromUserGalleries.getCurrentUserImage(state.userGalleries, index)
+		? selectorMapping.demoSelector(state.demoGallery)
+		: selectorMapping.userSelector(state.userGalleries, index)
 	);
 };
 
-export const getPlayingStatus = (state, ownProps) => {
-	const { demo, index } = ownProps;
-	return (
-		demo 
-		? fromDemoGallery.getDemoGalleryStatus(state.demoGallery) 
-		: fromUserGalleries.getUserGalleryStatus(state.userGalleries, index)
-	);
-};
-
-export const getImageCount = (state, ownProps) => {
-	const { demo, index } = ownProps;
-	return (
-		demo 
-		? fromDemoGallery.getDemoImageCount(state.demoGallery) 
-		: fromUserGalleries.getUserImageCount(state.userGalleries, index)
-	);
-};
-export const getNumberOfUserGalleries = (state) => {
-	return fromUserGalleries.getNumberOfUserGalleries(state.userGalleries);
-};
-
-export const getExistingImages = (state, index) => {
-	return fromUserGalleries.getExistingImages(state.userGalleries, index);
-};
+const selectorCreator = createSelectorCreator({
+	getCurrentImage: {
+		demoSelector: fromDemo.getCurrentDemoImage,
+		userSelector: fromUser.getCurrentUserImage
+	},
+	getPlayingStatus: {
+		demoSelector: fromDemo.getDemoGalleryStatus,
+		userSelector: fromUser.getUserGalleryStatus
+	},
+	getImageCount: {
+		demoSelector: fromDemo.getDemoImageCount,
+		userSelector: fromUser.getUserImageCount
+	},
+	getNumberOfUserGalleries: {
+		demoSelector: null,
+		userSelector: fromUser.getNumberOfUserGalleries
+	},
+	getExistingImages: {
+		demoSelector: null,
+		userSelector: fromUser.getExistingImages
+	}
+});
+export const getCurrentImage = selectorCreator('getCurrentImage');
+export const getPlayingStatus = selectorCreator('getPlayingStatus');
+export const getImageCount = selectorCreator('getImageCount');
+export const getNumberOfUserGalleries = selectorCreator('getNumberOfUserGalleries');
+export const getExistingImages = selectorCreator('getExistingImages');
+	
 ReactDOM.render(
 	<Provider store={configureStore()}>
 		<App />
