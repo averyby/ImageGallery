@@ -11,16 +11,26 @@ export default class ControlSection extends Component {
         togglePlaying(rest);
     };
 
-    getImages = (images) => {
+    getImages = async (images) => {
         if (!images || !images.length) return;
         const { id } = this.props;
-        images = images.map(
-            (img, idx) => ({
-                name: img.name,
-                imgUrl: window.URL.createObjectURL(img)
-            })
-        );
+        images = await Promise.all(images.map(
+            async img => await this.getImageInfo(img)
+        ));
         this.props.addImages({ id, images });
+    };
+
+    getImageInfo = (img) => {
+        return new Promise((resolve, reject) => {
+            let reader = new FileReader();
+
+            reader.onload = () => resolve({
+                name: img.name,
+                imgUrl: reader.result
+            });
+
+            reader.readAsDataURL(img);
+        });
     };
 
     handleDelete = () => this.props.deleteGallery(this.props.id);
