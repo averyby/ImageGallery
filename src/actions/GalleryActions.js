@@ -1,5 +1,13 @@
-export const createGallery = () => ({ type: 'ADD_GALLERY' });
-export const deleteGallery = (id) => ({ type: 'DELETE_GALLERY', id });
+import { saveUserData, deleteDataById } from '../indexedDB';
+
+export const createGallery = () => (dispatch, getState) => { 
+    dispatch({ type: 'ADD_GALLERY' });
+    saveUserData(getState().userGalleries);
+};
+export const deleteGallery = (id) => (dispatch, getState) => { 
+    dispatch({ type: 'DELETE_GALLERY', id });
+    deleteDataById(id);
+};
 
 const actionCreatorTemplate = (type) => ({demo, id}) => ({ type, demo, id });
 

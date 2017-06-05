@@ -44,12 +44,15 @@ export const getImageCount = selectorCreator('getImageCount');
 export const getUserGalleries = selectorCreator('getUserGalleries');
 export const getExistingImages = selectorCreator('getExistingImages');
 	
-ReactDOM.render(
-	<Provider store={configureStore()}>
-		<App />
-	</Provider>,
-	document.getElementById('app')
-);
+configureStore().then((store) => {
+	ReactDOM.render(
+		<Provider store={store}>
+			<App />
+		</Provider>,
+		document.getElementById('app')
+	);
+});
+
 
 if (module.hot) {
 	module.hot.accept()
