@@ -26,7 +26,6 @@ export default async () => {
     }
 
     const userData = await retrieveUserData();
-    debugger;
     const store = createStore(reducer, {
         demoGallery: {
             images: [boy1, boy2, boy3, boy4],
@@ -37,12 +36,5 @@ export default async () => {
         userGalleries: userData
     }, applyMiddleware(...middlewares));
 
-    store.dispatch = ((store) => {
-        const prevDispatch = store.dispatch;
-        return (action) => {
-            prevDispatch(action);
-            console.log('hello');
-        };
-    })(store);
     return store;
 };
