@@ -1,5 +1,13 @@
 let db;
 
+// In the following line, you should include the prefixes of implementations you want to test.
+const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+
+if (!indexedDB) {
+    window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+}
+
 const getDatabaseConnection = async () => {
     return db ? db :
     await new Promise((resolve, reject) => {
