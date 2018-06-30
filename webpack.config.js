@@ -76,8 +76,7 @@ var plugins = {
             purifyOptions: {
                 whitelist: ['*purify*']
             }
-        }),
-        new FaviconsWebpackPlugin('./my-logo.jpg')
+        })
     ],
     dev: [
         new webpack.HotModuleReplacementPlugin(),
